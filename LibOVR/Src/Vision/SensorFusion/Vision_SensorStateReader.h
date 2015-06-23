@@ -101,6 +101,16 @@ public:
     // Get the predicted pose (orientation, position) of the center pupil frame (CPF) at a specific point in time.
     bool         GetPoseAtTime(double absoluteTime, Posef& transform) const;
 
+	// Get the full dynamical system state of the CPF, which includes velocities and accelerations,
+	// predicted at a specified absolute point in time.
+	// "Extended" to support absoluteTime in the past
+	bool         GetTrackingStateAtTimeExtended(double absoluteTime, TrackingState& state) const;
+
+	// Get the predicted pose (orientation, position) of the center pupil frame (CPF) at a specific point in time.
+	// "Extended" to support absoluteTime in the past
+	bool         GetPoseAtTimeExtended(double absoluteTime, Posef& transform) const;
+
+
     // Get the sensor status (same as GetSensorStateAtTime(...).Status)
     uint32_t     GetStatus() const;
 
