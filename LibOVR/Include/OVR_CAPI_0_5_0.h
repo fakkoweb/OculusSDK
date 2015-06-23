@@ -815,7 +815,14 @@ OVR_PUBLIC_FUNCTION(void) ovrHmd_RecenterPose(ovrHmd hmd);
 /// This may also be used for more refined timing of FrontBuffer rendering logic, etc.
 OVR_PUBLIC_FUNCTION(ovrTrackingState) ovrHmd_GetTrackingState(ovrHmd hmd, double absTime);
 
-
+/// Returns tracking state reading based on the specified absolute system time.
+/// Pass an absTime value of 0.0 to request the most recent sensor reading. In this case
+/// both PredictedPose and SamplePose will have the same value.
+/// EXTENDED: you can also pass a negative absTime value. This will return a "predicted" pose
+/// in the past, useful if you don't want to memorize the past poses and don't need high accuracy.
+/// ovrHmd_GetEyePoses relies on a valid ovrTrackingState.
+/// This may also be used for more refined timing of FrontBuffer rendering logic, etc.
+OVR_PUBLIC_FUNCTION(ovrTrackingState) ovrHmd_GetTrackingStateExtended(ovrHmd hmd, double absTime);
 
 
 

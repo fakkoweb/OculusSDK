@@ -368,8 +368,27 @@ ovrTrackingState HMDState::PredictedTrackingState(double absTime, void*)
     Win32::DisplayShim::GetInstance().Active = (ss.StatusFlags & ovrStatus_HmdConnected) != 0;
 #endif
 
-
     return ss;
+}
+
+// Returns prediction for time. Uses extended version (past prediction).
+ovrTrackingState HMDState::PredictedTrackingStateExtended(double absTime, void*)
+{
+	Vision::TrackingState ss;
+	TheTrackingStateReader.GetTrackingStateAtTimeExtended(absTime, ss);
+
+	// Zero out the status flags
+	if (!pClient || !pClient->IsConnected(false, false))
+	{
+		ss.StatusFlags = 0;
+	}
+
+#ifdef OVR_OS_WIN32
+	// Set up display code for Windows
+	Win32::DisplayShim::GetInstance().Active = (ss.StatusFlags & ovrStatus_HmdConnected) != 0;
+#endif
+
+	return ss;
 }
 
 void HMDState::SetEnabledHmdCaps(unsigned hmdCaps)

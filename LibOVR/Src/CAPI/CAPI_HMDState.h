@@ -157,6 +157,7 @@ public:
     void            ResetTracking(bool visionReset);
     void            RecenterPose();
     ovrTrackingState PredictedTrackingState(double absTime, void* unused = nullptr);
+	ovrTrackingState PredictedTrackingStateExtended(double absTime, void* unused = nullptr);
 
     // Changes HMD Caps.
     // Capability bits that are not directly or logically tied to one system (such as sensor)

@@ -604,7 +604,14 @@ OVR_PUBLIC_FUNCTION(ovrTrackingState) ovrHmd_GetTrackingState(ovrHmd hmddesc, do
     return hmds->PredictedTrackingState(absTime);
 }
 
+OVR_PUBLIC_FUNCTION(ovrTrackingState) ovrHmd_GetTrackingStateExtended(ovrHmd hmddesc, double absTime)
+{
+	HMDState* hmds = GetHMDStateFromOvrHmd(hmddesc);
+	if (!hmds)
+		return GetNullTrackingState();
 
+	return hmds->PredictedTrackingStateExtended(absTime);
+}
 
 
 
