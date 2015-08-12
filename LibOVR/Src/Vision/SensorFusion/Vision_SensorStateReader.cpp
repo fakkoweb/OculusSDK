@@ -138,7 +138,7 @@ PoseState<float> calcPredictedPoseStateExtended(const LocklessSensorState& senso
 {
 	// Delta time from the last available data
 	double pdt = absoluteTime - sensorState.WorldFromImu.TimeInSeconds;
-	static const double maxPdt = 0.1;
+	static const double maxPdt = 0.1;	// 100 ms is the max Pdt where input time is clamped
 
 	// If delta went negative due to synchronization problems between processes or just a lag spike,
 	/* if (pdt < 0)		// CONSIDER ALSO THIS CASE!

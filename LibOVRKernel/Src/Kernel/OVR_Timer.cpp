@@ -56,6 +56,14 @@ extern "C" {
     }
 }
 
+// Add access to Milliseconds version of Get Time
+extern "C" {
+	double ovr_GetTimeInMilliseconds()
+	{
+		return Timer::GetTicksMs();
+	}
+}
+
 #endif
 
 

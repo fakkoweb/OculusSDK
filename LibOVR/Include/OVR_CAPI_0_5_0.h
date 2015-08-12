@@ -1043,6 +1043,10 @@ OVR_PUBLIC_FUNCTION(void) ovrHmd_GetEyeTimewarpMatricesDebug(ovrHmd hmddesc, ovr
 /// value as used in sensor messages.
 OVR_PUBLIC_FUNCTION(double) ovr_GetTimeInSeconds();
 
+/// Returns global, absolute high-resolution time in milliseconds. This is more
+/// precise as the above (since is obtained from Nanoseconds)
+OVR_PUBLIC_FUNCTION(uint32_t) ovr_GetTimeInMilliseconds();
+
 
 // -----------------------------------------------------------------------------------
 // ***** Latency Test interface

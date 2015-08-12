@@ -165,6 +165,11 @@ OVR_PUBLIC_FUNCTION(double) ovr_GetTimeInSeconds()
     return Timer::GetSeconds();
 }
 
+OVR_PUBLIC_FUNCTION(uint32_t) ovr_GetTimeInMilliseconds()
+{
+	return Timer::GetTicksMs();
+}
+
 
 //-------------------------------------------------------------------------------------
 
